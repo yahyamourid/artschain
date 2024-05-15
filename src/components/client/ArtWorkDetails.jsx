@@ -163,7 +163,7 @@ const ArtWorkDetails = (props) => {
                 </span>
 
                 <span className='flex w-4/5  items-center mt-8 mx-auto text-sm justify-between gap-4 my-4'>
-                    <button className='w-1/2 p-x-4 py-1 bg-pink-600 rounded-full hover:bg-pink-700 duration-300'>
+                    <button className='w-1/2 p-x-4 py-1 bg-orange-600 rounded-full hover:bg-orange-700 duration-300'>
                         <a href={`/certificates/${artWork[3]}`} target='_blank'>View Certificate</a>
                     </button>
                     <button className='w-1/2 p-x-4 py-1 bg-zinc-800  rounded-full border border-zinc-600 hover:bg-zinc-700'>
@@ -171,28 +171,22 @@ const ArtWorkDetails = (props) => {
                     </button>
                 </span>
                 {showPrice &&
-                    <span className='flex items-center justify-center mt-3 mx-auto gap-5 '>
-                        <span className='flex items-center gap-1'>
-                            <input className='text-white border-zinc-700 bg-zinc-800 focus:ring-0 focus:border-zinc-500 h-6 p-4 tracking-widest rounded-md  text-xl w-28 text-center' type='number' value={price} onChange={handlePriceInput} />
-                            <p className='text-sm mt-0.5'>MAD</p>
-                        </span>
-                        <span className='flex items-center gap-2 text-center'>
-                            <button onClick={() => putForSale()} >
-                                <GiConfirmed className='text-zinc-400 text-lg hover:text-green-500' />
-                                {/* <p>confirm</p> */}
-                            </button>
-                            <button onClick={() => setShowprice(false)} >
-                                <MdOutlineCancel className='text-zinc-400  text-xl hover:text-red-600' />
-                                {/* <p className='bg-white px-3 rounded-md text-black'>cancel</p> */}
-                            </button>
-                        </span>
+                    <span className='flex items-center justify-center mt-3 mx-auto gap-2'>
+                        <input className='text-white border-zinc-700 bg-zinc-800 focus:ring-0 focus:border-zinc-500 h-6 p-4 tracking-widest rounded-md  text-xl w-28 text-center' type='number' value={price} onChange={handlePriceInput} />
+                        <p>MAD</p>
+                        <button onClick={() => putForSale()}>
+                            <GiConfirmed className='text-zinc-400 text-lg hover:text-green-500' />
+                        </button>
+                        <button onClick={() => setShowprice(false)}>
+                            <MdOutlineCancel className='text-zinc-500 text-xl hover:text-red-600' />
+                        </button>
                     </span>
 
                 }
                 {
                     artWork.forSale == false ?
                         <button
-                            className='absolute top-5 right-5 text-3xl flex items-center text-zinc-500 gap-2 hover:text-pink-500 hover:scale-110 duration-500'
+                            className='absolute top-5 right-5 text-3xl flex items-center text-zinc-500 gap-2 hover:text-orange-500 hover:scale-110 duration-500'
                             onClick={() => setShowprice(true)}
                         >
                             <FaHandHoldingDollar />
@@ -202,11 +196,11 @@ const ArtWorkDetails = (props) => {
                         <span className='absolute top-3 right-3 flex gap-4'>
                             <span className='flex items-end tracking-wide gap-1 my-3'>
                                 <IoMdPricetags className='text-xl mb-1' />
-                                <p className='text-3xl text-pink-600 font-bold'>{artWork[9].toString()} </p>
+                                <p className='text-3xl text-orange-600 font-bold'>{artWork[9].toString()} </p>
                                 <p className='text-sm mb-1'>MAD</p>
                             </span>
 
-                            <button className=' text-3xl flex items-center text-zinc-500 gap-2 hover:text-pink-600 hover:scale-110 duration-500'
+                            <button className=' text-3xl flex items-center text-zinc-500 gap-2 hover:text-orange-600 hover:scale-110 duration-500'
                                 onClick={() => removeForSale()}
                             >
                                 <BiHide />
@@ -228,13 +222,13 @@ const ArtWorkDetails = (props) => {
             />
             {showModal && <LoadingModal message={'Artwork status is being changed'} />}
             {!props.new &&
-                <button className='absolute top-4 left-20 flex items-center gap-2 hover:text-pink-500 duration-300'
+                <button className='absolute top-4 left-20 flex items-center gap-2 hover:text-orange-500 duration-300'
                     onClick={() => props.showArtWork(false)}>
                     <BsArrowLeftCircleFill /> Go back
                 </button>
 
             }
-            {artWork.forSale && <button className='absolute bottom-6 right-6 text-5xl hover:scale-110 flex items-center gap-2 hover:text-pink-500 duration-300'
+            {artWork.forSale && <button className='absolute bottom-6 right-6 text-5xl hover:scale-110 flex items-center gap-2 hover:text-orange-500 duration-300'
                 onClick={() => setShowPropriete(true)}>
                 <GiCardExchange />
             </button>}

@@ -20,7 +20,7 @@ const Certificate = () => {
         const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
         const artsChainContract = new ethers.Contract(contractAdress, contractABI, signer);
-        const result = await artsChainContract.getArtWorkById(id);
+        const result = await artsChainContract.getArtWorkByIdGen(id);
         const rep = await getHash(id)
         setTimeout(() => {
           setLoading(false);

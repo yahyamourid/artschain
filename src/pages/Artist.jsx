@@ -13,6 +13,7 @@ const Artist = () => {
       <Sidebar state={setState}/>
       {state == 'home' && <Dashboard/>}
       {state == 'addArtWork' && <AddArtWork/>}
+      
     </div>
   )
 }

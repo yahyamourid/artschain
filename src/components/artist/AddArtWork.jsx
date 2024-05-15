@@ -111,7 +111,7 @@ const AddArtWork = () => {
             setTimeout(async () => {
                 console.log(result)
                 console.log(result.hash)
-                await checkTransactionStatus(result.hash)
+                // await checkTransactionStatus(result.hash)
                 const repartwork = await artsChainContract.getLastArtwork()
                 console.log("arwork created : ", repartwork)
                 saveHash(repartwork.artworkId, result.hash)
@@ -198,14 +198,14 @@ const AddArtWork = () => {
                                 style={{ alignItems: 'flex-start' }}
                             />
                         </span>
-                        <span className='flex  w-full'>
-                            <span className='w-4/5  flex justify-end'>
-                                <button className='text-base text-white font-semibold tracking-wider bg-violet-600 hover:bg-violet-500 rounded-full py-1 px-6  '
+                        
+                            <span className='w-3/5 flex justify-center mr-20 mt-3'>
+                                <button className='text-base w-3/4 text-black font-semibold tracking-wider bg-white hover:bg-violet-200 rounded-full py-1 px-3  '
                                     onClick={() => UploadToIPFS(fileInputRef.current.files[0])}>
                                     Create
                                 </button>
                             </span>
-                        </span>
+                        
 
 
                     </span>

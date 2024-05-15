@@ -11,13 +11,15 @@ import { HiOutlinePaintBrush } from "react-icons/hi2";
 import { CiWallet, CiImageOn } from "react-icons/ci";
 import { RxDimensions } from "react-icons/rx";
 import { getHash } from '../components/db/FireBaseDB';
-
+import Transfer from '../components/Transfer';
+import { FaMoneyBillTransfer } from "react-icons/fa6";
 const Artwork = () => {
     const { id } = useParams();
     const [hash, setHash] = useState('');
     const [loading, setLoading] = useState(true);
     const [notFound, setNotFound] = useState(false);
     const [artwork, setArtWork] = useState(null);
+    const [showTransfer, setShowTransfer] = useState(false)
     const imageIpfsRef = useRef(null);
     const ownerAddressRef = useRef(null);
     const urlEtherscane = `https://sepolia.etherscan.io/tx/${hash}`;
@@ -48,7 +50,7 @@ const Artwork = () => {
 
         return formattedDate;
     }
-    
+
 
     useEffect(() => {
         const getArtWork = async () => {
@@ -57,7 +59,7 @@ const Artwork = () => {
                 const signer = await provider.getSigner();
                 const artsChainContract = new ethers.Contract(contractAdress, contractABI, signer);
                 const result = await artsChainContract.getArtWorkByIdGen(id);
-                const rep = await getHash(result[3]) 
+                const rep = await getHash(result[3])
                 setTimeout(() => {
                     setLoading(false);
                     setArtWork(result);
@@ -85,7 +87,7 @@ const Artwork = () => {
                 (!notFound ?
                     <div className='relative flex items-center min-h-screen w-full h-screen p-4 gap-4 bg-zinc-950 text-white'>
                         <div className='flex w-4/5 items-center mx-auto gap-4  h-full'>
-                            <div className='w-1/2 sm:w-full h-full bg-cover bg-center rounded-lg' style={{ backgroundImage: `url(https://gateway.pinata.cloud/ipfs/${artwork[6]})` }}></div>
+                            <div className='w-3/5  h-4/5 bg-cover bg-center rounded-lg' style={{ backgroundImage: `url(https://gateway.pinata.cloud/ipfs/${artwork[6]})` }}></div>
                             <div className='w-1/2 flex flex-col items-start bg-zinc-800 rounded-xl p-4'>
                                 <span className='text-3xl font-bold tracking-wider mb-4'>
                                     {artwork[4]}
@@ -126,7 +128,7 @@ const Artwork = () => {
                                         <RxDimensions className='mr-1' />
                                         Size:
                                     </span>
-                                    <span className='ml-1 text-base text-zinc-200'>{artwork[9]}x{artwork[10]}</span>
+                                    <span className='ml-1 text-base text-zinc-200'>{artwork[10]} x {artwork[11]}</span>
                                 </span>
                                 <span className='flex items-center mb-2'>
                                     <span className='text-base font-medium text-zinc-600 flex items-center'>
@@ -155,6 +157,12 @@ const Artwork = () => {
                                 </div>
                             </div>
                         </div>
+                        <button
+                            className='absolute top-6 left-6 text-4xl hover:scale-110 text-zinc-600 duration-500 hover:text-violet-500'
+                            onClick={() => setShowTransfer(true)}
+                        >
+                            <FaMoneyBillTransfer />
+                        </button>
                     </div>
                     :
                     <div className='flex items-center justify-center bg-black text-white min-h-screen h-full text-xl font-light '>
@@ -162,6 +170,7 @@ const Artwork = () => {
                     </div>
                 )
             }
+            {showTransfer && <Transfer showTransfer={setShowTransfer} artWorkId={id} owner={artwork.owner}/>}
         </>
     );
 };

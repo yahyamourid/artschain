@@ -24,7 +24,7 @@ const Hero = () => {
             <div className="flex flex-col justify-center items-start w-3/5 h-3/4  space-y-8 z-40">
                 <h1 className='text-5xl text-transparent bg-gradient-to-r from-violet-700 to-violet-200 bg-clip-text font-extrabold tracking-wider '>Plastic Arts Certification Platform</h1>
                 <p className='text-base text-gray-300 font-semibold tracking-widest'>Explore our platform to certify your artistic creations using blockchain technology.</p>
-                <div class="flex items-center justify-center gap-20">
+                <div className="flex items-center justify-center gap-20">
                     {/* <div class="absolute -inset-0.5 bg-gradient-to-r from-pink-600 m-1 to-violet-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                     <button class="relative px-10 py-3 bg-slate-950 rounded-lg leading-none flex items-center ">
                         <span class="text-violet-700 font-semibold group-hover:text-gray-100 transition duration-200">Discover &rarr;</span>
@@ -45,8 +45,8 @@ const Hero = () => {
                     </span>
                 </div>
             </div>
-            <div class="flex w-2/5 items-center justify-center relative group mt-10 ">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-violet-600 rounded-lg blur opacity-75 -m-1.5 group-hover:opacity-100 transition duration-2000 group-hover:duration-200 animate-tilt"></div>
+            <div className="flex w-2/5 items-center justify-center relative group mt-10 ">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-violet-600 rounded-lg blur opacity-75 -m-1.5 group-hover:opacity-100 transition duration-2000 group-hover:duration-200 animate-tilt"></div>
                 <div className="relative ">
                     <img src={hero} className='rounded-lg' alt="Votre image" />
                     <div className="absolute inset-0 rounded-lg bg-slate-950 opacity-80 animate-pulse" style={{ animationDuration: '4s' }}></div>

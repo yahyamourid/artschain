@@ -29,14 +29,15 @@ const LastArtWork = (props) => {
 
     return (
 
-        <div className='flex justify-between p-3 w-3/4 bg-zinc-800 h-1/2 rounded-t-lg rounded-bl-lg rounded-br-3xl border border-violet-400  border-opacity-30'>
+        <div className='flex w-3/4 bg-zinc-800 justify-between p-3 h-1/2 rounded-t-lg rounded-bl-lg rounded-br-3xl border border-orange-400  border-opacity-30'>
             <span className='flex flex-col text-xs items-start justify-center text-zinc-400 w-1/2 h-full px-4 py-2'>
                 <p className='font-bold text-zinc-500'>Last Art work</p>
                 <p className='text-2xl font-extrabold tracking-wide my-3 text-white'>{lastArtWork[4]}</p>
                 <p className='tracking-wide'>{lastArtWork[3]}</p>
+                <p>Artist: {lastArtWork[2]}</p>
                 <p className='mt-1'>{lastArtWork[10]}x{lastArtWork[11]}</p>
                 <span className='flex items-center'>
-                    <p>owner:&nbsp;{shortenAddress(lastArtWork[1])}</p>
+                    <p>Owner: &nbsp;{shortenAddress(lastArtWork[1])}</p>
                     <button onClick={() => copyToClipboard(lastArtWork[1])} className='ml-3 p-1 rounded-lg duration-300 text-zinc-500 hover:bg-zinc-500 hover:text-zinc-300'>
                         <FaCopy />
                     </button>
@@ -53,7 +54,7 @@ const LastArtWork = (props) => {
                     </a>
                 </span>
                 <span className='flex w-full items-center text-white justify-between gap-1 my-4'>
-                    <button className='w-1/2 p-x-4 py-1 bg-violet-600 rounded-full hover:bg-violet-500'>
+                    <button className='w-1/2 p-x-4 py-1 bg-orange-600 rounded-full hover:bg-orange-500'>
                         <a href={`/certificates/${lastArtWork[3]}`} target='_blank'>Certificat</a>
                     </button>
                     <button className='w-1/2 p-x-4 py-1 bg-zinc-800  rounded-full border border-zinc-600 hover:bg-zinc-700'>

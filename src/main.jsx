@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import Artist from "./pages/Artist";
+import Client from "./pages/Client";
 import Certificate from "./pages/Certificate";
 import Artwork from "./pages/Artwork";
 import InstallMetamask from "./pages/InstallMetamask";
@@ -20,6 +21,13 @@ const isAdminConnected = () => {
 const isArtistConnected = () => {
   const userDet = localStorage.getItem('userDet');
   if (!userDet || JSON.parse(userDet).role !== 'Artist')
+    return false;
+
+  return true
+}
+const isClientConnected = () => {
+  const userDet = localStorage.getItem('userDet');
+  if (!userDet || JSON.parse(userDet).role !== 'Client')
     return false;
 
   return true
@@ -44,6 +52,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Route path="/artist" element={<Artist />} />
             ) : (
               <Route path='/artist' element={<Navigate replace to="/" />} />
+            )}
+            {isClientConnected() ? (
+              <Route path="/client" element={<Client />} />
+            ) : (
+              <Route path='/client' element={<Navigate replace to="/" />} />
             )}
           </>
         ) : (

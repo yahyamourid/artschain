@@ -29,17 +29,14 @@ const connectToWallet = async () => {
         return 'rejected';
     }
 }
-const register = async (userName,firstName, lastName) => {
+const register = async (userName,firstName, lastName, role) => {
     const connectionStatus = await connectToWallet();
     if (connectionStatus === 'connected') {
         try {
             const provider = new ethers.BrowserProvider(window.ethereum)
             const signer = await provider.getSigner();
             const artsChainContract = new ethers.Contract(contractAdress, contractABI, signer);
-            const result = await artsChainContract.register(userName,firstName, lastName);
-            console.log('result')
-            
-            // console.log(result)
+            const result = await artsChainContract.register(userName,firstName, lastName, role);
             return result;
         } catch (error) {
             return error.message

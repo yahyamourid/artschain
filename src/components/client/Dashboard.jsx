@@ -42,6 +42,7 @@ const Dashboard = () => {
                   <LastArtWork lastArtWork={artWorks[artWorks.length - 1]} />
                   <ArtworksCarousel artWorks={artWorks} showArtWork={setShowArtWork} setArtWork={setArtWork} />
                 </div>
+                
               </>:
               <p>No data to display</p>)
               

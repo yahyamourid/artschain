@@ -98,9 +98,10 @@ const NavBar = () => {
 
     };
 
-    const handleRegister = async (userName, firstName, lastName) => {
+    const handleRegister = async (userName, firstName, lastName, role) => {
         try {
-            const res = await register(userName, firstName, lastName)
+            setRegistering(true)
+            const res = await register(userName, firstName, lastName, role)
             console.log(res)
             if (!res.hash) {
                 setOpenRegister(false)
@@ -108,14 +109,13 @@ const NavBar = () => {
                 return;
             }
             setOpenRegister(false)
-            setRegistering(true);
             setTimeout(async () => {
                 console.log(res.hash)
                 await checkTransactionStatus(res.hash)
                 await handleLogin();
                 setRegistering(false);
                 setModeRegister(false)
-            }, 3000);
+            }, 200);
             handleLogin()
         } catch (error) {
             console.log(error)
